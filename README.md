@@ -1,17 +1,15 @@
-# Puppet
+# OpenVox
 
-![RSpec tests](https://github.com/puppetlabs/puppet/workflows/RSpec%20tests/badge.svg)
-[![Gem Version](https://badge.fury.io/rb/puppet.svg)](https://badge.fury.io/rb/puppet)
-[![Inline docs](https://inch-ci.org/github/puppetlabs/puppet.svg)](https://inch-ci.org/github/puppetlabs/puppet)
-
-Puppet, an automated administrative engine for your Linux, Unix, and Windows systems, performs
+OpenVox is a community implementation of Puppet, an automated administrative engine for your Linux, Unix, and Windows systems, performs
 administrative tasks (such as adding users, installing packages, and updating server
 configurations) based on a centralized specification.
 
 ## Documentation
 
-Documentation for Puppet and related projects can be found online at the
-[Puppet Docs site](https://puppet.com/docs).
+As of now, OpenVox is effectively the same as the original Puppet™️ packages, aside from some minor build pipeline changes and package renaming.
+This means that aside from the installation, all Puppet™️ docs and tutorials will still be completely applicable.
+As the OpenVox project matures, we will create more documentation, guides, and tutorials.
+For the time being though, now you’ll want to hop over to [Puppet’s own documentation](https://puppet.com/docs) and go from there.
 
 ### HTTP API
 
@@ -19,36 +17,37 @@ Documentation for Puppet and related projects can be found online at the
 
 ## Installation
 
-The best way to run Puppet is with [Puppet Enterprise (PE)](https://puppet.com/products/puppet-enterprise/),
-which also includes orchestration features, a web console, and professional support.
-The PE documentation is [available here.](https://puppet.com/docs/pe/latest)
+To install OpenVox,
+[see our installation guide.](https://voxpupuli.org/openvox/install/) and [quickstart page](https://voxpupuli.org/openvox/quickstart/).
 
-To install an open source release of Puppet,
-[see the installation guide on the docs site.](https://puppet.com/docs/puppet/latest/installing_and_upgrading.html)
-
-If you need to run Puppet from source as a tester or developer,
+If you need to run OpenVox from source as a tester or developer,
 see the [Quick Start to Developing on Puppet](docs/quickstart.md) guide.
 
 ## Developing and Contributing
 
 We'd love to get contributions from you! For a quick guide to getting your
 system setup for developing, take a look at our [Quickstart
-Guide](https://github.com/puppetlabs/puppet/blob/main/docs/quickstart.md). Once you are up and running, take a look at the
-[Contribution Documents](https://github.com/puppetlabs/.github/blob/main/CONTRIBUTING.md) to see how to get your changes merged
+Guide](docs/quickstart.md). Once you are up and running, take a look at the
+[Contribution Documents](https://github.com/OpenVoxProject/.github/blob/main/CONTRIBUTING.md) to see how to get your changes merged
 in.
 
 For more complete docs on developing with Puppet, take a look at the
-rest of the [developer documents](https://github.com/puppetlabs/puppet/blob/main/docs/index.md).
+rest of the [developer documents](docs/index.md).
 
 ## Licensing
 
-See [LICENSE](https://github.com/puppetlabs/puppet/blob/main/LICENSE) file. Puppet is licensed by Puppet, Inc. under the Apache license. Puppet, Inc. can be contacted at: info@puppet.com
+See [LICENSE](LICENSE) file. OpenVox is licensed by Vox Pupuli as a community maintained
+implementation of Puppet. Vox Pupuli can be contacted at: voxpupuli@groups.io.
+Puppet itself is licensed by Puppet, Inc. under the Apache license. Puppet, Inc. can be contacted at: info@puppet.com
 
 ## Support
 
-Please log issues in this project's [GitHub Issues](https://github.com/puppetlabs/puppet/issues). A [mailing
-list](https://groups.google.com/forum/?fromgroups#!forum/puppet-users) is
-available for asking questions and getting help from others, or if you prefer chat, we also have a [Puppet Community slack.](https://puppetcommunity.slack.com/)
+Please log issues in this project's [GitHub Issues](/issues).
+Other channels for getting help can be found at our
+[support page](https://voxpupuli.org/openvox/support/),
+including the mailing list and other community spaces available
+for asking questions and getting help from others.
+
 
 We use semantic version numbers for our releases and recommend that users stay
 as up-to-date as possible by upgrading to patch releases and minor releases as
@@ -60,9 +59,5 @@ a best-effort basis, until the previous major version is no longer maintained.
 
 For example: If a security vulnerability is discovered in Puppet 8.1.1, we
 would fix it in the 8 series, most likely as 8.1.2. Maintainers would then make
-a best effort to backport that fix onto the latest Puppet 7 release.
-
-Long-term support, including security patches and bug fixes, is available for
-commercial customers. Please see the following page for more details:
-
-[Puppet Enterprise Support Lifecycle](https://puppet.com/docs/puppet-enterprise/product-support-lifecycle/)
+a best effort to backport that fix onto earlier releases that haven't reached
+their respective end-of-life dates.

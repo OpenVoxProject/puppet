@@ -1,24 +1,24 @@
 Gem::Specification.new do |spec|
-  spec.name = "puppet"
+  spec.name = "openvox"
   spec.version = "8.11.0"
   spec.licenses = ['Apache-2.0']
 
   spec.required_rubygems_version = Gem::Requirement.new("> 1.3.1")
   spec.required_ruby_version = Gem::Requirement.new(">= 3.1.0")
-  spec.authors = ["Puppet Labs"]
+  spec.authors = ["Vox Pupuli"]
   spec.date = "2012-08-17"
   spec.description = <<~EOF
-    Puppet, an automated administrative engine for your Linux, Unix, and Windows systems, performs administrative tasks
+    OpenVox is a community implementation of Puppet, an automated administrative engine for your Linux, Unix, and Windows systems, performs administrative tasks
     (such as adding users, installing packages, and updating server configurations) based on a centralized specification.
   EOF
-  spec.email = "info@puppetlabs.com"
+  spec.email = "openvox@voxpupuli.org."
   spec.executables = ["puppet"]
   spec.files = Dir['[A-Z]*'] + Dir['install.rb'] + Dir['bin/*'] + Dir['lib/**/*'] + Dir['conf/*'] + Dir['man/**/*'] + Dir['tasks/*'] + Dir['locales/**/*'] + Dir['ext/**/*'] + Dir['examples/**/*']
   spec.license = "Apache-2.0"
-  spec.homepage = "https://github.com/puppetlabs/puppet"
-  spec.rdoc_options = ["--title", "Puppet - Configuration Management", "--main", "README", "--line-numbers"]
+  spec.homepage = "https://github.com/OpenVoxProject/puppet"
+  spec.rdoc_options = ["--title", "OpenVox - Configuration Management", "--main", "README", "--line-numbers"]
   spec.require_paths = ["lib"]
-  spec.summary = "Puppet, an automated configuration management tool"
+  spec.summary = "OpenVox, a community implementation of Puppet -- an automated configuration management tool"
   spec.specification_version = 4
   spec.add_runtime_dependency('concurrent-ruby', '~> 1.0')
   spec.add_runtime_dependency('deep_merge', '~> 1.0')

@@ -81,7 +81,7 @@ class Puppet::Application::Agent < Puppet::Application
   end
 
   def summary
-    _("The puppet agent daemon")
+    _("The puppet agent daemon provided by OpenVox")
   end
 
   def help
@@ -92,7 +92,7 @@ class Puppet::Application::Agent < Puppet::Application
 
       SYNOPSIS
       --------
-      Retrieves the client configuration from the Puppet master and applies it to
+      Retrieves the client configuration from the OpenVox server and applies it to
       the local host.
 
       This service may be run as a daemon, run periodically using cron (or something
@@ -366,7 +366,9 @@ class Puppet::Application::Agent < Puppet::Application
 
       COPYRIGHT
       ---------
-      Copyright (c) 2011 Puppet Inc., LLC Licensed under the Apache 2.0 License
+      Copyright (c) 2011 Puppet Inc.
+      Copyright (c) 2024 Vox Pupuli
+      Licensed under the Apache 2.0 License
 
     HELP
   end

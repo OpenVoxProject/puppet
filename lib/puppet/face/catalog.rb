@@ -3,7 +3,7 @@
 require_relative '../../puppet/indirector/face'
 
 Puppet::Indirector::Face.define(:catalog, '0.0.1') do
-  copyright "Puppet Inc.", 2011
+  copyright "Puppet Inc., Vox Pupuli", 2011
   license   "Apache 2 license; see COPYING"
 
   summary _("Compile, save, view, and convert catalogs.")

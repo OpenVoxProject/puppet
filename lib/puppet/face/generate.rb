@@ -5,7 +5,7 @@ require_relative '../../puppet/generate/type'
 
 # Create the Generate face
 Puppet::Face.define(:generate, '0.1.0') do
-  copyright 'Puppet Inc.', 2016
+  copyright 'Puppet Inc., Vox Pupuli', 2016
   license   _('Apache 2 license; see COPYING')
 
   summary _('Generates Puppet code from Ruby definitions.')

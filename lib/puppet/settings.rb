@@ -1089,12 +1089,12 @@ class Puppet::Settings
   def to_config
     str = %(The configuration file for #{Puppet.run_mode.name}.  Note that this file
 is likely to have unused settings in it; any setting that's
-valid anywhere in Puppet can be in any config file, even if it's not used.
+valid anywhere in OpenVox can be in any config file, even if it's not used.
 
 Every section can specify three special parameters: owner, group, and mode.
 These parameters affect the required permissions of any files specified after
-their specification.  Puppet will sometimes use these parameters to check its
-own configured state, so they can be used to make Puppet a bit more self-managing.
+their specification.  OpenVox will sometimes use these parameters to check its
+own configured state, so they can be used to make OpenVox a bit more self-managing.
 
 The file format supports octothorpe-commented lines, but not partial-line comments.
 
@@ -1142,7 +1142,7 @@ Generated on #{Time.now}.
       begin
         catalog = to_catalog(*sections).to_ral
       rescue => detail
-        Puppet.log_and_raise(detail, "Could not create resources for managing Puppet's files and directories in sections #{sections.inspect}: #{detail}")
+        Puppet.log_and_raise(detail, "Could not create resources for managing OpenVox's files and directories in sections #{sections.inspect}: #{detail}")
       end
 
       catalog.host_config = false

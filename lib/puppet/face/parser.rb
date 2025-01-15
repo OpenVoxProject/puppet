@@ -4,7 +4,7 @@ require_relative '../../puppet/face'
 require_relative '../../puppet/parser'
 
 Puppet::Face.define(:parser, '0.0.1') do
-  copyright "Puppet Inc.", 2014
+  copyright "Puppet Inc., Vox Pupuli", 2014
   license   _("Apache 2 license; see COPYING")
 
   summary _("Interact directly with the parser.")
@@ -34,7 +34,7 @@ Puppet::Face.define(:parser, '0.0.1') do
 
       Validate from STDIN:
 
-      $ cat init.pp | puppet parser validate
+      $ cat init.pp \| puppet parser validate
     EOT
     when_invoked do |*args|
       files = args.slice(0..-2)

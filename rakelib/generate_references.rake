@@ -287,7 +287,7 @@ namespace :references do
     variables = {
       sha: sha,
       now: now,
-      title: 'Puppet Man Pages',
+      title: 'OpenVox Man Pages',
       core_apps: core_apps,
       occasional_apps: occasional_apps,
       weird_apps: weird_apps

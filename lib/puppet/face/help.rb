@@ -7,13 +7,13 @@ require 'pathname'
 require 'erb'
 
 Puppet::Face.define(:help, '0.0.1') do
-  copyright "Puppet Inc.", 2011
+  copyright "Puppet Inc., Vox Pupuli", 2011
   license   _("Apache 2 license; see COPYING")
 
   summary _("Display Puppet help.")
 
   action(:help) do
-    summary _("Display help about Puppet subcommands and their actions.")
+    summary _("Display help about OpenVox subcommands and their actions.")
     arguments _("[<subcommand>] [<action>]")
     returns _("Short help text for the specified subcommand or action.")
     examples _(<<-'EOT')

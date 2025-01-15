@@ -16,7 +16,7 @@ class Puppet::Application::Filebucket < Puppet::Application
   attr_reader :args
 
   def summary
-    _("Store and retrieve files in a filebucket")
+    _("Store and retrieve files in an OpenVox filebucket")
   end
 
   def digest_algorithm
@@ -31,7 +31,7 @@ class Puppet::Application::Filebucket < Puppet::Application
 
       SYNOPSIS
       --------
-      A stand-alone Puppet filebucket client.
+      A stand-alone OpenVox filebucket client.
 
 
       USAGE
@@ -207,7 +207,9 @@ class Puppet::Application::Filebucket < Puppet::Application
 
       COPYRIGHT
       ---------
-      Copyright (c) 2011 Puppet Inc., LLC Licensed under the Apache 2.0 License
+      Copyright (c) 2011 Puppet Inc.
+      Copyright (c) 2024 Vox Pupuli
+      Licensed under the Apache 2.0 License
 
     HELP
   end

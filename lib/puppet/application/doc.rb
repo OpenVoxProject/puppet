@@ -52,7 +52,7 @@ class Puppet::Application::Doc < Puppet::Application
   end
 
   def summary
-    _("Generate Puppet references")
+    _("Generate Puppet references for OpenVox")
   end
 
   def help
@@ -111,7 +111,9 @@ class Puppet::Application::Doc < Puppet::Application
 
       COPYRIGHT
       ---------
-      Copyright (c) 2011 Puppet Inc., LLC Licensed under the Apache 2.0 License
+      Copyright (c) 2011 Puppet Inc.
+      Copyright (c) 2024 Vox Pupuli
+      Licensed under the Apache 2.0 License
 
     HELP
   end

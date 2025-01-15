@@ -6,7 +6,7 @@ require_relative '../../puppet/parser/files'
 require_relative '../../puppet/file_system'
 
 Puppet::Face.define(:epp, '0.0.1') do
-  copyright "Puppet Inc.", 2014
+  copyright "Puppet Inc., Vox Pupuli", 2014
   license   _("Apache 2 license; see COPYING")
 
   summary _("Interact directly with the EPP template parser/renderer.")

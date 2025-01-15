@@ -4,13 +4,13 @@ require_relative '../../puppet/indirector/face'
 require_relative '../../puppet/node/facts'
 
 Puppet::Indirector::Face.define(:facts, '0.0.1') do
-  copyright "Puppet Inc.", 2011
+  copyright "Puppet Inc., Vox Pupuli", 2011
   license   _("Apache 2 license; see COPYING")
 
   summary _("Retrieve and store facts.")
   description <<-'EOT'
     This subcommand manages facts, which are collections of normalized system
-    information used by Puppet. It can read facts directly from the local system
+    information used by OpenVox. It can read facts directly from the local system
     (with the default `facter` terminus).
   EOT
 

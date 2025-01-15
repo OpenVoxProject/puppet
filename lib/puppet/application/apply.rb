@@ -36,7 +36,7 @@ class Puppet::Application::Apply < Puppet::Application
   end
 
   def summary
-    _("Apply Puppet manifests locally")
+    _("Apply Puppet manifests locally via OpenVox")
   end
 
   def help
@@ -64,10 +64,10 @@ class Puppet::Application::Apply < Puppet::Application
       individual manifests.
 
       When provided with a modulepath, via command line or config file, puppet
-      apply can effectively mimic the catalog that would be served by puppet
-      master with access to the same modules, although there are some subtle
+      apply can effectively mimic the catalog that would be served by OpenVox
+      server with access to the same modules, although there are some subtle
       differences. When combined with scheduling and an automated system for
-      pushing manifests, this can be used to implement a serverless Puppet
+      pushing manifests, this can be used to implement a serverless OpenVox
       site.
 
       Most users should use 'puppet agent' and 'puppet master' for site-wide
@@ -166,7 +166,9 @@ class Puppet::Application::Apply < Puppet::Application
 
       COPYRIGHT
       ---------
-      Copyright (c) 2011 Puppet Inc., LLC Licensed under the Apache 2.0 License
+      Copyright (c) 2011 Puppet Inc.
+      Copyright (c) 2024 Vox Pupuli
+      Licensed under the Apache 2.0 License
 
     HELP
   end

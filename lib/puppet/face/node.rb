@@ -2,12 +2,12 @@
 
 require_relative '../../puppet/indirector/face'
 Puppet::Indirector::Face.define(:node, '0.0.1') do
-  copyright "Puppet Inc.", 2011
+  copyright "Puppet Inc., Vox Pupuli", 2011
   license   _("Apache 2 license; see COPYING")
 
   summary _("View and manage node definitions.")
   description <<-'EOT'
-    This subcommand interacts with node objects, which are used by Puppet to
+    This subcommand interacts with node objects, which are used by OpenVox to
     build a catalog. A node object consists of the node's facts, environment,
     node parameters (exposed in the parser as top-scope variables), and classes.
   EOT

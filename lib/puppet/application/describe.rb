@@ -174,7 +174,7 @@ class Puppet::Application::Describe < Puppet::Application
   option("--meta", "-m")
 
   def summary
-    _("Display help about resource types")
+    _("Display help about resource types available to OpenVox")
   end
 
   def help
@@ -185,7 +185,8 @@ class Puppet::Application::Describe < Puppet::Application
 
       SYNOPSIS
       --------
-      Prints help about Puppet resource types, providers, and metaparameters.
+      Prints help about Puppet resource types, providers, and metaparameters
+      installed on an OpenVox node.
 
 
       USAGE
@@ -225,7 +226,9 @@ class Puppet::Application::Describe < Puppet::Application
 
       COPYRIGHT
       ---------
-      Copyright (c) 2011 Puppet Inc., LLC Licensed under the Apache 2.0 License
+      Copyright (c) 2011 Puppet Inc.
+      Copyright (c) 2024 Vox Pupuli
+      Licensed under the Apache 2.0 License
 
     HELP
   end

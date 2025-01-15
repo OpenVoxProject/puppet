@@ -5,12 +5,12 @@ require_relative '../../puppet/settings/ini_file'
 
 Puppet::Face.define(:config, '0.0.1') do
   extend Puppet::Util::Colors
-  copyright "Puppet Inc.", 2011
+  copyright "Puppet Inc., Vox Pupuli", 2011
   license   _("Apache 2 license; see COPYING")
 
-  summary _("Interact with Puppet's settings.")
+  summary _("Interact with OpenVox's settings.")
 
-  description "This subcommand can inspect and modify settings from Puppet's
+  description "This subcommand can inspect and modify settings from OpenVox's
     'puppet.conf' configuration file. For documentation about individual settings,
     see https://puppet.com/docs/puppet/latest/configuration.html."
 
@@ -23,7 +23,7 @@ Puppet::Face.define(:config, '0.0.1') do
       The section of the puppet.conf configuration file to interact with.
 
       The three most commonly used sections are 'main', 'server', and 'agent'.
-      'Main' is the default, and is used by all Puppet applications. Other
+      'Main' is the default, and is used by all OpenVox applications. Other
       sections can override 'main' values for specific applications --- the
       'server' section affects Puppet Server, and the 'agent'
       section affects puppet agent.
@@ -37,7 +37,7 @@ Puppet::Face.define(:config, '0.0.1') do
 
   action(:print) do
     summary _("Examine Puppet's current settings.")
-    arguments _("all | <setting> [<setting> ...]")
+    arguments _("all \\| <setting> [<setting> ...]")
     description <<-'EOT'
       Prints the value of a single setting or a list of settings.
 
@@ -56,7 +56,7 @@ Puppet::Face.define(:config, '0.0.1') do
 
       Get a list of important directories from the server's config:
 
-      $ puppet config print all --section server | grep -E "(path|dir)"
+      $ puppet config print all --section server \| grep -E "(path\|dir)"
     EOT
 
     when_invoked do |*args|

@@ -35,7 +35,7 @@ class Puppet::Application::Resource < Puppet::Application
   end
 
   def summary
-    _("The resource abstraction layer shell")
+    _("The OpenVox resource abstraction layer shell")
   end
 
   def help
@@ -46,7 +46,7 @@ class Puppet::Application::Resource < Puppet::Application
 
       SYNOPSIS
       --------
-      Uses the Puppet RAL to directly interact with the system.
+      Uses the OpenVox RAL to directly interact with the system.
 
 
       USAGE
@@ -60,7 +60,7 @@ class Puppet::Application::Resource < Puppet::Application
       -----------
       This command provides simple facilities for converting current system
       state into Puppet code, along with some ability to modify the current
-      state using Puppet's RAL.
+      state using OpenVox's RAL.
 
       By default, you must at least provide a type to list, in which case
       puppet resource will tell you everything it knows about all resources of
@@ -137,7 +137,9 @@ class Puppet::Application::Resource < Puppet::Application
 
       COPYRIGHT
       ---------
-      Copyright (c) 2011 Puppet Inc., LLC Licensed under the Apache 2.0 License
+      Copyright (c) 2011 Puppet Inc.
+      Copyright (c) 2024 Vox Pupuli
+      Licensed under the Apache 2.0 License
 
     HELP
   end

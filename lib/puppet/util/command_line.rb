@@ -175,7 +175,7 @@ module Puppet
             puts colorize(:hred, _("Error: Could not parse application options: invalid option: %{opt}") % { opt: args[0] })
             exit 1
           else
-            puts _("See 'puppet help' for help on available puppet subcommands")
+            puts _("See 'puppet help' for help on available subcommands")
           end
         end
       end
@@ -188,7 +188,7 @@ module Puppet
         end
 
         def run
-          puts colorize(:hred, _("Error: Unknown Puppet subcommand '%{cmd}'") % { cmd: @subcommand_name })
+          puts colorize(:hred, _("Error: Unknown subcommand '%{cmd}'") % { cmd: @subcommand_name })
           super
           exit 1
         end

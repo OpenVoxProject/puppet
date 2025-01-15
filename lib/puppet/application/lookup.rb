@@ -101,7 +101,7 @@ class Puppet::Application::Lookup < Puppet::Application
   end
 
   def summary
-    _("Interactive Hiera lookup")
+    _("Interactive Hiera lookup for OpenVox")
   end
 
   def help
@@ -115,8 +115,8 @@ class Puppet::Application::Lookup < Puppet::Application
       Does Hiera lookups from the command line.
 
       Since this command needs access to your Hiera data, make sure to run it on a
-      node that has a copy of that data. This usually means logging into a Puppet
-      Server node and running 'puppet lookup' with sudo.
+      node that has a copy of that data. This usually means logging into an OpenVox
+      server node and running 'puppet lookup' with sudo.
 
       The most common version of this command is:
 
@@ -264,7 +264,9 @@ class Puppet::Application::Lookup < Puppet::Application
 
       COPYRIGHT
       ---------
-      Copyright (c) 2015 Puppet Inc., LLC Licensed under the Apache 2.0 License
+      Copyright (c) 2015 Puppet Inc.
+      Copyright (c) 2024 Vox Pupuli
+      Licensed under the Apache 2.0 License
 
 
     HELP

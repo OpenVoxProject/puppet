@@ -107,7 +107,9 @@ class Puppet::Application::Script < Puppet::Application
 
       COPYRIGHT
       ---------
-      Copyright (c) 2017 Puppet Inc., LLC Licensed under the Apache 2.0 License
+      Copyright (c) 2017 Puppet Inc.
+      Copyright (c) 2024 Vox Pupuli
+      Licensed under the Apache 2.0 License
 
     HELP
   end

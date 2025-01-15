@@ -81,7 +81,7 @@ class Puppet::Application::Device < Puppet::Application
   end
 
   def summary
-    _("Manage remote network devices")
+    _("Manage remote network devices via OpenVox")
   end
 
   def help
@@ -92,7 +92,7 @@ class Puppet::Application::Device < Puppet::Application
 
       SYNOPSIS
       --------
-      Retrieves catalogs from the Puppet master and applies them to remote devices.
+      Retrieves catalogs from the OpenVox server and applies them to remote devices.
 
       This subcommand can be run manually; or periodically using cron,
       a scheduled task, or a similar tool.
@@ -222,7 +222,8 @@ class Puppet::Application::Device < Puppet::Application
 
       COPYRIGHT
       ---------
-      Copyright (c) 2011-2018 Puppet Inc., LLC
+      Copyright (c) 2011-2018 Puppet Inc.,
+      Copyright (c) 2024 Vox Pupuli
       Licensed under the Apache 2.0 License
     HELP
   end

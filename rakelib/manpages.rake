@@ -1,4 +1,4 @@
-desc "Build Puppet manpages"
+desc "Build OpenVox manpages"
 task :gen_manpages do
   require 'puppet/face'
   require 'fileutils'
@@ -12,7 +12,7 @@ task :gen_manpages do
   faces.delete('strings')
   apps = non_face_applications + faces
 
-  ronn_args = '--manual="Puppet manual" --organization="Puppet, Inc." --roff'
+  ronn_args = '--manual="OpenVox manual" --organization="Vox Pupuli" --roff'
 
   unless ENV['SOURCE_DATE_EPOCH'].nil?
     source_date = Time.at(ENV['SOURCE_DATE_EPOCH'].to_i).strftime('%Y-%m-%d')
