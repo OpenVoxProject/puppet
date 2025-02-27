@@ -87,7 +87,7 @@ def do_man(man, strip = 'man/')
     unless $osname == "Solaris"
       gzip = %x{which gzip}
       gzip.chomp!
-      %x{#{gzip} -f #{omf}}
+      %x{#{gzip} -n -f #{omf}}
     end
   end
 end
