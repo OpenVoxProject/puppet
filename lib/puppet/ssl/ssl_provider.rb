@@ -103,7 +103,7 @@ class Puppet::SSL::SSLProvider
 
       client_cert = cert_provider.load_client_cert(Puppet[:certname], required: false)
       unless client_cert
-        msg "Client certificate for '#{Puppet[:certname]}' does not exist"
+        msg = "Client certificate for '#{Puppet[:certname]}' does not exist"
         Puppet.run_mode.name == :user ? Puppet.info(msg) : Puppet.warning(msg)
       end
 
