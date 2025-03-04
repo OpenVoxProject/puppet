@@ -97,12 +97,14 @@ class Puppet::SSL::SSLProvider
       cert_provider = Puppet::X509::CertProvider.new
       private_key = cert_provider.load_private_key(Puppet[:certname], required: false)
       unless private_key
-        Puppet.warning("Private key for '#{Puppet[:certname]}' does not exist")
+        msg = "Private key for '#{Puppet[:certname]}' does not exist"
+        Puppet.run_mode.name == :user ? Puppet.info(msg) : Puppet.warning(msg)
       end
 
       client_cert = cert_provider.load_client_cert(Puppet[:certname], required: false)
       unless client_cert
-        Puppet.warning("Client certificate for '#{Puppet[:certname]}' does not exist")
+        msg "Client certificate for '#{Puppet[:certname]}' does not exist"
+        Puppet.run_mode.name == :user ? Puppet.info(msg) : Puppet.warning(msg)
       end
 
       if private_key && client_cert
