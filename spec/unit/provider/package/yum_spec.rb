@@ -363,7 +363,7 @@ describe Puppet::Type.type(:package).provider(:yum) do
 
         it 'selects best_version' do
           expect(provider).to receive(:execute).with(
-            ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', :install, 'myresource-18.3.2']
+            ['/usr/bin/yum', '-y', :install, 'myresource-18.3.2']
           )
           provider.install
         end
@@ -374,7 +374,7 @@ describe Puppet::Type.type(:package).provider(:yum) do
 
           it 'treats no epoch as zero' do
             expect(provider).to receive(:execute).with(
-              ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', :install, 'myresource-18.3.2']
+              ['/usr/bin/yum', '-y', :install, 'myresource-18.3.2']
               )
             provider.install
           end
@@ -387,7 +387,7 @@ describe Puppet::Type.type(:package).provider(:yum) do
 
         it 'selects best_version and removes epoch' do
           expect(provider).to receive(:execute).with(
-            ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', :install, 'myresource-18.3.2']
+            ['/usr/bin/yum', '-y', :install, 'myresource-18.3.2']
           )
           provider.install
         end
@@ -399,14 +399,14 @@ describe Puppet::Type.type(:package).provider(:yum) do
 
         it 'uses requested version' do
           expect(provider).to receive(:execute).with(
-            ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', :install, "myresource->18.1 <19"]
+            ['/usr/bin/yum', '-y', :install, "myresource->18.1 <19"]
           )
           provider.install
         end
 
         it 'logs a debug message' do
           allow(provider).to receive(:execute).with(
-            ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', :install, "myresource->18.1 <19"]
+            ['/usr/bin/yum', '-y', :install, "myresource->18.1 <19"]
           )
 
           expect(Puppet).to receive(:debug).with(
@@ -422,7 +422,7 @@ describe Puppet::Type.type(:package).provider(:yum) do
 
       it 'passes the version to yum command' do
         expect(provider).to receive(:execute).with(
-            ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', :install, "myresource-1:18.12"]
+            ['/usr/bin/yum', '-y', :install, "myresource-1:18.12"]
           )
           provider.install
       end
@@ -440,7 +440,7 @@ describe Puppet::Type.type(:package).provider(:yum) do
 
       it 'adds update flag to install command' do
         expect(provider).to receive(:execute).with(
-          ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', 'update', 'myresource-18.3.2']
+          ['/usr/bin/yum', '-y', 'update', 'myresource-18.3.2']
         )
         provider.install
       end
@@ -458,7 +458,7 @@ describe Puppet::Type.type(:package).provider(:yum) do
 
       it 'adds downgrade flag to install command' do
         expect(provider).to receive(:execute).with(
-          ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', :downgrade, 'myresource-18.3.2']
+          ['/usr/bin/yum', '-y', :downgrade, 'myresource-18.3.2']
         )
         provider.install
       end
@@ -470,7 +470,7 @@ describe Puppet::Type.type(:package).provider(:yum) do
       context 'when execute command fails' do
         before do
           allow(provider).to receive(:execute).with(
-            ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', :install, "myresource-20"]
+            ['/usr/bin/yum', '-y', :install, "myresource-20"]
           ).and_return('No package myresource-20 available.')
         end
 
@@ -484,7 +484,7 @@ describe Puppet::Type.type(:package).provider(:yum) do
         before do
           allow(provider).to receive(:query)
           allow(provider).to receive(:execute).with(
-            ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', :install, "myresource-20"]
+            ['/usr/bin/yum', '-y', :install, "myresource-20"]
           )
         end
 
@@ -497,7 +497,7 @@ describe Puppet::Type.type(:package).provider(:yum) do
       context 'when package is not installed' do
         before do
           allow(provider).to receive(:execute).with(
-            ['/usr/bin/yum', '-d', '0', '-e', '0', '-y', :install, "myresource-20"]
+            ['/usr/bin/yum', '-y', :install, "myresource-20"]
           )
           allow(provider).to receive(:insync?).and_return(false)
         end
