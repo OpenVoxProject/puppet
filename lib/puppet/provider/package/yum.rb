@@ -247,7 +247,7 @@ Puppet::Type.type(:package).provide :yum, :parent => :rpm, :source => :rpm do
     update_command = self.class.update_command
     # If not allowing virtual packages, do a query to ensure a real package exists
     unless @resource.allow_virtual?
-      execute([command(:cmd), '-d', '0', '-e', error_level, '-y', install_options, :list, wanted].compact)
+      execute([command(:cmd)] + ['-qy', install_options, :list, wanted].compact)
     end
 
     should = @resource.should(:ensure)
@@ -309,8 +309,7 @@ Puppet::Type.type(:package).provide :yum, :parent => :rpm, :source => :rpm do
 
     # Yum on el-4 and el-5 returns exit status 0 when trying to install a package it doesn't recognize;
     # ensure we capture output to check for errors.
-    no_debug = Puppet.runtime[:facter].value('os.release.major').to_i > 5 ? ["-d", "0"] : []
-    command = [command(:cmd)] + no_debug + ["-e", error_level, "-y", install_options, operation, wanted].compact
+    command = [command(:cmd)] + ["-qy", install_options, operation, wanted].compact
     output = execute(command)
 
     if output.to_s =~ /^No package #{wanted} available\.$/
