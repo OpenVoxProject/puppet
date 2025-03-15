@@ -245,9 +245,19 @@ Puppet::Type.type(:package).provide :yum, :parent => :rpm, :source => :rpm do
     wanted = @resource[:name]
     error_level = self.class.error_level
     update_command = self.class.update_command
+
+    # Check if dnf is installed
+    def dnf_installed?
+      system('command -v dnf > /dev/null 2>&1')
+    end
+
+    # Use new syntax if dnf is installed, otherwise use old syntax
+    no_debug = dnf_installed? ? ["-q"] : ["-d", "0"]
+    no_error = dnf_installed? ? [] : ["-e", error_level]
+
     # If not allowing virtual packages, do a query to ensure a real package exists
     unless @resource.allow_virtual?
-      execute([command(:cmd), '-d', '0', '-e', error_level, '-y', install_options, :list, wanted].compact)
+      execute([command(:cmd)] + no_debug + no_error + ['-y', install_options, :list, wanted].compact)
     end
 
     should = @resource.should(:ensure)
@@ -309,8 +319,7 @@ Puppet::Type.type(:package).provide :yum, :parent => :rpm, :source => :rpm do
 
     # Yum on el-4 and el-5 returns exit status 0 when trying to install a package it doesn't recognize;
     # ensure we capture output to check for errors.
-    no_debug = Puppet.runtime[:facter].value('os.release.major').to_i > 5 ? ["-d", "0"] : []
-    command = [command(:cmd)] + no_debug + ["-e", error_level, "-y", install_options, operation, wanted].compact
+    command = [command(:cmd)] + no_debug + no_error + ["-y", install_options, operation, wanted].compact
     output = execute(command)
 
     if output.to_s =~ /^No package #{wanted} available\.$/
