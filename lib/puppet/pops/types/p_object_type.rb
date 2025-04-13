@@ -876,7 +876,7 @@ class PObjectType < PMetaType
     struct_elems = {}
     attributes(true).values.each do |attr|
       unless attr.kind == ATTRIBUTE_KIND_CONSTANT || attr.kind == ATTRIBUTE_KIND_DERIVED
-        if attr.value?
+        if attr.value? || attr.kind == ATTRIBUTE_KIND_GIVEN_OR_DERIVED
           struct_elems[TypeFactory.optional(attr.name)] = attr.type
         else
           struct_elems[attr.name] = attr.type
