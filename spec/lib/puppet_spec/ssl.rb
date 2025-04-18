@@ -61,7 +61,7 @@ EOT
 
       csr.public_key = key.public_key
       csr.subject = OpenSSL::X509::Name.parse(name)
-      csr.version = 2
+      csr.version = 0
       csr.sign(key, DEFAULT_SIGNING_DIGEST)
 
       csr

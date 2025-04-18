@@ -34,7 +34,7 @@ module Puppet
       csr = OpenSSL::X509::Request.new
       csr.public_key = key.public_key
       csr.subject = OpenSSL::X509::Name.new([["CN", name]])
-      csr.version = 2
+      csr.version = 0
       csr.sign(key, @digest)
       { private_key: key, csr: csr }
     end
