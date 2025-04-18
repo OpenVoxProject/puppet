@@ -127,7 +127,7 @@ describe Puppet::Util::CommandLine do
           expect {
             commandline.execute
           }.to exit_with(1)
-           .and output(/Unknown Puppet subcommand 'whatever'/).to_stdout
+           .and output(/Unknown subcommand 'whatever'/).to_stdout
         end
 
         it "should abort and show the help message" do
@@ -138,7 +138,7 @@ describe Puppet::Util::CommandLine do
           expect {
             commandline.execute
           }.to exit_with(1)
-           .and output(/See 'puppet help' for help on available puppet subcommands/).to_stdout
+           .and output(/See 'puppet help' for help on available subcommands/).to_stdout
         end
 
         %w{--version -V}.each do |arg|
