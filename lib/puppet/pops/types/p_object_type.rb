@@ -316,6 +316,8 @@ class PObjectType < PMetaType
 
         v = init_hash[KEY_VALUE]
         @value = v == :default ? v : TypeAsserter.assert_instance_of(nil, type, v) { "#{label} #{KEY_VALUE}" }
+      elsif @kind == ATTRIBUTE_KIND_GIVEN_OR_DERIVED
+        @value = nil
       else
         raise Puppet::ParseError, _("%{label} of kind 'constant' requires a value") % { label: label } if @kind == ATTRIBUTE_KIND_CONSTANT
 
@@ -341,7 +343,7 @@ class PObjectType < PMetaType
         hash[KEY_KIND] = @kind
         hash.delete(KEY_FINAL) if @kind == ATTRIBUTE_KIND_CONSTANT # final is implied
       end
-      hash[KEY_VALUE] = @value unless @value == :undef
+      hash[KEY_VALUE] = @value unless @value == :undef || @kind == ATTRIBUTE_KIND_GIVEN_OR_DERIVED
       hash
     end
 
