@@ -71,7 +71,7 @@ module Puppet
   # @return void
   def self.initialize_default_settings!(settings)
     settings.define_settings(:main,
-    :confdir  => {
+    :confdir => {
         :default  => nil,
         :type     => :directory,
         :desc     => "The main Puppet configuration directory.  The default for this setting
@@ -80,7 +80,7 @@ module Puppet
           directory, but if it's running as any other user, it defaults to being
           in the user's home directory.",
     },
-    :codedir  => {
+    :codedir => {
         :default  => nil,
         :type     => :directory,
         :desc     => "The main Puppet code directory.  The default for this setting
@@ -89,7 +89,7 @@ module Puppet
           directory, but if it's running as any other user, it defaults to being
           in the user's home directory.",
     },
-    :vardir   => {
+    :vardir => {
         :default  => nil,
         :type     => :directory,
         :owner    => "service",
@@ -100,7 +100,7 @@ module Puppet
 
     ### NOTE: this setting is usually being set to a symbol value.  We don't officially have a
     ###     setting type for that yet, but we might want to consider creating one.
-    :name     => {
+    :name => {
         :default  => nil,
         :desc     => "The name of the application, if we are running as one.  The
           default is essentially $0 without the path or `.rb`.",
@@ -149,7 +149,7 @@ module Puppet
         * `deprecations` --- disables deprecation warnings.
         * `undefined_variables` --- disables warnings about non existing variables.
         * `undefined_resources` --- disables warnings about non existing resources.",
-      :hook      => proc do |value|
+      :hook => proc do |value|
         values = munge(value)
         valid   = %w[deprecations undefined_variables undefined_resources]
         invalid = values - (values & valid)
@@ -197,7 +197,7 @@ module Puppet
         but may be added in minor releases (x.y.0). In major releases
         it expected that most (if not all) strictness validation become
         standard behavior.",
-      :hook    => proc do |value|
+      :hook => proc do |value|
         munge(value)
         value.to_sym
       end
@@ -359,7 +359,7 @@ module Puppet
           This setting can only be set in the `[main]` section of puppet.conf; it cannot
           be set in `[server]`, `[agent]`, or an environment config section.",
         :call_hook => :on_define_and_write,
-        :hook             => proc do |value|
+        :hook => proc do |value|
           ENV['PATH'] = '' if ENV['PATH'].nil?
           ENV['PATH'] = value unless value == 'none'
           paths = ENV['PATH'].split(File::PATH_SEPARATOR)
@@ -582,7 +582,7 @@ module Puppet
       :desc    => "The binder configuration file. Puppet reads this file on each request to configure the bindings system.
       If set to nil (the default), a $confdir/binder_config.yaml is optionally loaded. If it does not exists, a default configuration
       is used. If the setting :binding_config is specified, it must reference a valid and existing yaml file.",
-      :type    => :file,
+      :type => :file,
     },
     :catalog_terminus => {
       :type       => :terminus,
@@ -642,7 +642,7 @@ module Puppet
       :default    => "none",
       :desc       => "The user name for an authenticated HTTP proxy. Requires the `http_proxy_host` setting.",
     },
-    :http_proxy_password =>{
+    :http_proxy_password => {
       :default    => "none",
       :hook       => proc do |value|
         if value =~ %r{[@!# /]}
@@ -742,7 +742,7 @@ Valid values are 0 (never cache) and 15 (15 second minimum wait time).
       "
     },
     :environment_data_provider => {
-      :desc       => "The name of a registered environment data provider used when obtaining environment
+      :desc => "The name of a registered environment data provider used when obtaining environment
       specific data. The three built in and registered providers are 'none' (no data), 'function' (data
       obtained by calling the function 'environment::data()') and 'hiera' (data obtained using a data
       provider configured using a hiera.yaml file in root of the environment).
@@ -783,14 +783,14 @@ Valid values are 0 (never cache) and 15 (15 second minimum wait time).
     },
     :location_trusted => {
       :default => false,
-      :type     => :boolean,
-      :desc    => "This will allow sending the name + password and the cookie header to all hosts that puppet may redirect to.
+      :type => :boolean,
+      :desc => "This will allow sending the name + password and the cookie header to all hosts that puppet may redirect to.
         This may or may not introduce a security breach if puppet redirects you to a site to which you'll send your authentication info and cookies."
     }
   )
 
   settings.define_settings(:module_tool,
-    :module_repository  => {
+    :module_repository => {
       :default  => 'https://forgeapi.puppet.com',
       :desc     => "The module repository",
     },
@@ -908,7 +908,7 @@ EOT
     },
     :certdir => {
       :default => "$ssldir/certs",
-      :type   => :directory,
+      :type => :directory,
       :mode => "0755",
       :owner => "service",
       :group => "service",
@@ -916,7 +916,7 @@ EOT
     },
     :ssldir => {
       :default => "$confdir/ssl",
-      :type   => :directory,
+      :type => :directory,
       :mode => "0771",
       :owner => "service",
       :group => "service",
@@ -929,7 +929,7 @@ EOT
     },
     :publickeydir => {
       :default => "$ssldir/public_keys",
-      :type   => :directory,
+      :type => :directory,
       :mode => "0755",
       :owner => "service",
       :group => "service",
@@ -945,7 +945,7 @@ EOT
     },
     :privatekeydir => {
       :default => "$ssldir/private_keys",
-      :type   => :directory,
+      :type => :directory,
       :mode => "0750",
       :owner => "service",
       :group => "service",
@@ -953,7 +953,7 @@ EOT
     },
     :privatedir => {
       :default => "$ssldir/private",
-      :type   => :directory,
+      :type => :directory,
       :mode => "0750",
       :owner => "service",
       :group => "service",
@@ -961,7 +961,7 @@ EOT
     },
     :passfile => {
       :default => "$privatedir/password",
-      :type   => :file,
+      :type => :file,
       :mode => "0640",
       :owner => "service",
       :group => "service",
@@ -970,7 +970,7 @@ EOT
     },
     :hostcsr => {
       :default => "$requestdir/$certname.pem",
-      :type   => :file,
+      :type => :file,
       :mode => "0644",
       :owner => "service",
       :group => "service",
@@ -979,7 +979,7 @@ EOT
     },
     :hostcert => {
       :default => "$certdir/$certname.pem",
-      :type   => :file,
+      :type => :file,
       :mode => "0644",
       :owner => "service",
       :group => "service",
@@ -987,7 +987,7 @@ EOT
     },
     :hostprivkey => {
       :default => "$privatekeydir/$certname.pem",
-      :type   => :file,
+      :type => :file,
       :mode => "0640",
       :owner => "service",
       :group => "service",
@@ -995,7 +995,7 @@ EOT
     },
     :hostpubkey => {
       :default => "$publickeydir/$certname.pem",
-      :type   => :file,
+      :type => :file,
       :mode => "0644",
       :owner => "service",
       :group => "service",
@@ -1003,7 +1003,7 @@ EOT
     },
     :localcacert => {
       :default => "$certdir/ca.pem",
-      :type   => :file,
+      :type => :file,
       :mode => "0644",
       :owner => "service",
       :group => "service",
@@ -1011,7 +1011,7 @@ EOT
     },
     :ca_fingerprint => {
       :default => nil,
-      :type   => :string,
+      :type => :string,
       :desc => "The expected fingerprint of the CA certificate. If specified, the agent
         will compare the CA certificate fingerprint that it downloads against this value
         and reject the CA certificate if the values do not match. This only applies
@@ -1028,7 +1028,7 @@ EOT
     },
     :hostcrl => {
       :default => "$ssldir/crl.pem",
-      :type   => :file,
+      :type => :file,
       :mode => "0644",
       :owner => "service",
       :group => "service",
@@ -2145,7 +2145,7 @@ EOT
         settings.define_settings(
         :ldap,
     :ldapssl => {
-      :default  => false,
+      :default => false,
       :type   => :boolean,
       :desc   => "Whether SSL should be used when searching for nodes.
         Defaults to false because SSL usually requires certificates

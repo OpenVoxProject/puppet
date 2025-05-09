@@ -102,12 +102,16 @@ task :spec do
   sh %{rspec #{ENV['TEST'] || ENV['TESTS'] || 'spec'}}
 end
 
-desc 'run static analysis with rubocop'
-task(:rubocop) do
-  require 'rubocop'
-  cli = RuboCop::CLI.new
-  exit_code = cli.run(%w(--display-cop-names --format simple))
-  raise "RuboCop detected offenses" if exit_code != 0
+begin
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new(:rubocop) do |task|
+    # These make the rubocop experience maybe slightly less terrible
+    task.options = ['--display-cop-names', '--display-style-guide', '--extra-details']
+    # Use Rubocop's Github Actions formatter if possible
+    task.formatters << 'github' if ENV['GITHUB_ACTIONS'] == 'true'
+  end
+rescue LoadError
+  # the gem is only used on MRI Ruby
 end
 
 desc "verify that changed files are clean of Ruby warnings"

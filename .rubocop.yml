@@ -218,12 +218,6 @@ RSpec/SubjectDeclaration: # new in 2.5
 RSpec/VerifiedDoubleReference: # new in 2.10.0
   Enabled: true
 
-RSpec/FactoryBot/SyntaxMethods: # new in 2.7
-  Enabled: true
-
-RSpec/Rails/AvoidSetupHook: # new in 2.4
-  Enabled: true
-
 Style/AutoResourceCleanup:
   Enabled: true
 

@@ -32,3 +32,5 @@ coverage/
 .rakeTasks
 .idea/
 spec_order.txt
+/vendor
+/.vendor

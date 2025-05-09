@@ -2,10 +2,10 @@
 name: RSpec tests
 
 on:
+  pull_request: {}
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -14,13 +14,12 @@ jobs:
   rspec_tests:
     name: ${{ matrix.cfg.os }}(ruby ${{ matrix.cfg.ruby }})
     strategy:
+      fail-fast: false
       matrix:
         cfg:
-          - {os: ubuntu-latest, ruby: '3.1'}
-          - {os: ubuntu-20.04, ruby: '3.2'} # openssl 1.1.1
-          - {os: ubuntu-22.04, ruby: '3.2'} # openssl 3
-          - {os: ubuntu-22.04, ruby: '3.3'} # openssl 3 / latest Ruby
-          - {os: ubuntu-latest, ruby: 'jruby-9.4.3.0'}
+          - {os: ubuntu-24.04, ruby: '3.2'} # openssl 3
+          - {os: ubuntu-24.04, ruby: '3.3'} # openssl 3
+          - {os: ubuntu-24.04, ruby: 'jruby-9.4'}
           - {os: windows-2019, ruby: '3.1'}
           - {os: windows-2019, ruby: '3.2'} # openssl 3
           - {os: windows-2019, ruby: '3.3'} # openssl 3 / latest Ruby
@@ -81,4 +80,4 @@ jobs:
             sudo apt remove rpm
           fi
 
-          bundle exec rake parallel:spec[2]
+          bundle exec rake parallel:spec
