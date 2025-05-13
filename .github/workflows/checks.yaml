@@ -31,4 +31,4 @@ jobs:
           bundler-cache: true
 
       - name: Run ${{ matrix.cfg.check }} check
-        run: bundle exec rake ${{ matrix.cfg.check }}
+        run: bundle exec rake ${{ matrix.cfg.check }} --trace
