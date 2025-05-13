@@ -16,8 +16,8 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - {check: rubocop, os: ubuntu-latest, ruby: '3.1'}
-          - {check: warnings, os: ubuntu-latest, ruby: '3.1'}
+          - {check: rubocop, os: ubuntu-24.04, ruby: '3.1'}
+          - {check: warnings, os: ubuntu-24.04, ruby: '3.1'}
 
     runs-on: ${{ matrix.cfg.os }}
     steps:
