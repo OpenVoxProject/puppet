@@ -50,9 +50,6 @@
 # we need yaml or there's not much point in going on
 require 'yaml'
 
-# Sets are like arrays but automatically de-duplicate elements
-require 'set'
-
 # set up some syslog logging
 require 'syslog'
 Syslog.open('extnodes', Syslog::LOG_PID | Syslog::LOG_NDELAY, Syslog::LOG_DAEMON)

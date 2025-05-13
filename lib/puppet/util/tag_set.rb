@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'set'
 require_relative '../../puppet/network/format_support'
 
 class Puppet::Util::TagSet < Set
