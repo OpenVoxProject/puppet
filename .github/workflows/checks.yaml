@@ -16,26 +16,19 @@ jobs:
     strategy:
       matrix:
         cfg:
-          - {check: rubocop, os: ubuntu-latest, ruby: '3.1'}
-          - {check: warnings, os: ubuntu-latest, ruby: '3.1'}
+          - {check: rubocop, os: ubuntu-24.04, ruby: '3.1'}
+          - {check: warnings, os: ubuntu-24.04, ruby: '3.1'}
 
     runs-on: ${{ matrix.cfg.os }}
     steps:
       - name: Checkout current PR
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Install ruby version ${{ matrix.cfg.ruby }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.cfg.ruby }}
-
-      - name: Update rubygems and install gems
-        run: |
-          gem update --system --silent --no-document
-          bundle config set without packaging documentation
-          bundle install --jobs 4 --retry 3
+          bundler-cache: true
 
       - name: Run ${{ matrix.cfg.check }} check
-        run: bundle exec rake ${{ matrix.cfg.check }}
+        run: bundle exec rake ${{ matrix.cfg.check }} --trace
