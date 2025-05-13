@@ -30,12 +30,36 @@ Layout/EmptyLinesAroundMethodBody:
     - 'lib/puppet/util/windows/file.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: leading, trailing
+Layout/LineContinuationLeadingSpace:
+  Exclude:
+    - 'lib/puppet/functions/eyaml_lookup_key.rb'
+    - 'lib/puppet/interface/action.rb'
+    - 'lib/puppet/network/http/api.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: space, no_space
+Layout/LineContinuationSpacing:
+  Exclude:
+    - 'lib/puppet/application/lookup.rb'
+    - 'lib/puppet/functions/eyaml_lookup_key.rb'
+    - 'lib/puppet/interface/action.rb'
+    - 'lib/puppet/pal/pal_impl.rb'
+    - 'lib/puppet/pops/merge_strategy.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowForAlignment, EnforcedStyleForExponentOperator, EnforcedStyleForRationalLiterals.
 # SupportedStylesForExponentOperator: space, no_space
 # SupportedStylesForRationalLiterals: space, no_space
 Layout/SpaceAroundOperators:
   Exclude:
     - 'lib/puppet/util/symbolic_file_mode.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: false
 
 # Configuration parameters: AllowedMethods.
 # AllowedMethods: enums
@@ -57,6 +81,37 @@ Lint/ConstantDefinitionInBlock:
     - 'lib/puppet/type/schedule.rb'
     - 'lib/puppet/type/tidy.rb'
 
+# Configuration parameters: IgnoreLiteralBranches, IgnoreConstantBranches, IgnoreDuplicateElseBranch.
+Lint/DuplicateBranch:
+  Enabled: false
+
+# Configuration parameters: AllowComments, AllowEmptyLambdas.
+Lint/EmptyBlock:
+  Exclude:
+    - 'lib/puppet/functions/break.rb'
+    - 'lib/puppet/network/formats.rb'
+    - 'lib/puppet/pops/serialization/abstract_writer.rb'
+    - 'lib/puppet/pops/types/p_timestamp_type.rb'
+    - 'lib/puppet/property/ensure.rb'
+    - 'lib/puppet/type/file.rb'
+    - 'lib/puppet/type/tidy.rb'
+    - 'lib/puppet/util/windows/user.rb'
+
+# Configuration parameters: AllowComments.
+Lint/EmptyClass:
+  Exclude:
+    - 'lib/puppet/file_serving.rb'
+    - 'lib/puppet/indirector/file_content.rb'
+    - 'lib/puppet/indirector/file_metadata.rb'
+    - 'lib/puppet/node/environment.rb'
+    - 'lib/puppet/ssl/openssl_loader.rb'
+    - 'lib/puppet/util/windows.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Lint/IncompatibleIoSelectWithFiberScheduler:
+  Exclude:
+    - 'lib/puppet/util/execution.rb'
+
 # Configuration parameters: AllowedParentClasses.
 Lint/MissingSuper:
   Enabled: false
@@ -75,6 +130,16 @@ Lint/NestedMethodDefinition:
     - 'lib/puppet/pops/types/p_uri_type.rb'
     - 'lib/puppet/pops/types/types.rb'
     - 'lib/puppet/type.rb'
+
+Lint/NoReturnInBeginEndBlocks:
+  Exclude:
+    - 'lib/puppet/pops/types/types.rb'
+    - 'lib/puppet/provider/package/portage.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Lint/NonAtomicFileOperation:
+  Exclude:
+    - 'lib/puppet/settings.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowPercentLiteralArrayArgument.
@@ -116,6 +181,29 @@ Lint/SuppressedException:
     - 'lib/puppet/util/execution.rb'
     - 'util/rspec_grouper'
 
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Lint/SuppressedExceptionInNumberConversion:
+  Exclude:
+    - 'lib/puppet/util/pidlock.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: strict, consistent
+Lint/SymbolConversion:
+  Exclude:
+    - 'lib/puppet/application.rb'
+    - 'lib/puppet/etc.rb'
+    - 'lib/puppet/functions.rb'
+    - 'lib/puppet/graph/relationship_graph.rb'
+    - 'lib/puppet/interface/action.rb'
+    - 'lib/puppet/pops/lookup/sub_lookup.rb'
+    - 'lib/puppet/pops/model/factory.rb'
+    - 'lib/puppet/provider/aix_object.rb'
+    - 'lib/puppet/provider/user/user_role_add.rb'
+    - 'lib/puppet/type.rb'
+    - 'lib/puppet/util/command_line/trollop.rb'
+    - 'lib/puppet/util/windows/adsi.rb'
+
 # This cop supports safe autocorrection (--autocorrect).
 Lint/ToJSON:
   Exclude:
@@ -129,11 +217,32 @@ Lint/ToJSON:
 Lint/UnusedMethodArgument:
   Enabled: false
 
+Lint/UselessConstantScoping:
+  Enabled: false
+
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AutoCorrect, CheckForMethodsWithNoSideEffects.
 Lint/Void:
   Exclude:
     - 'lib/puppet/type/schedule.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+# Configuration parameters: EnforcedStyle, BlockForwardingName.
+# SupportedStyles: anonymous, explicit
+Naming/BlockForwarding:
+  Enabled: false
+
+# Configuration parameters: MinSize.
+Performance/CollectionLiteralInLoop:
+  Enabled: false
+
+# This cop supports safe autocorrection (--autocorrect).
+Performance/ConstantRegexp:
+  Exclude:
+    - 'lib/puppet/pops/lookup/hiera_config.rb'
+    - 'lib/puppet/provider/package/yum.rb'
+    - 'lib/puppet/reports/store.rb'
+    - 'lib/puppet/type/file/source.rb'
 
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Performance/Count:
@@ -153,6 +262,10 @@ Performance/InefficientHashSearch:
     - 'lib/puppet/resource.rb'
     - 'lib/puppet/util/windows/adsi.rb'
 
+Performance/MethodObjectAsBlock:
+  Exclude:
+    - 'lib/puppet/module/task.rb'
+
 # This cop supports safe autocorrection (--autocorrect).
 Performance/RedundantBlockCall:
   Exclude:
@@ -170,18 +283,99 @@ Performance/RedundantBlockCall:
     - 'lib/puppet/util.rb'
 
 # This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: AllowRegexpMatch.
+Performance/RedundantEqualityComparisonBlock:
+  Exclude:
+    - 'lib/puppet/file_system/path_pattern.rb'
+    - 'lib/puppet/functions.rb'
+    - 'lib/puppet/pops/types/types.rb'
+    - 'lib/puppet/settings/ini_file.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: MaxKeyValuePairs.
 Performance/RedundantMerge:
   Exclude:
     - 'lib/puppet/x509/cert_provider.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
+Performance/RedundantSplitRegexpArgument:
+  Exclude:
+    - 'lib/puppet/functions.rb'
+    - 'lib/puppet/functions/regsubst.rb'
+    - 'lib/puppet/interface/documentation.rb'
+    - 'lib/puppet/pops/evaluator/external_syntax_support.rb'
+    - 'lib/puppet/pops/evaluator/runtime3_support.rb'
+    - 'lib/puppet/provider/package/aptrpm.rb'
+    - 'lib/puppet/provider/service/gentoo.rb'
+    - 'lib/puppet/type/exec.rb'
+    - 'lib/puppet/type/file.rb'
+    - 'lib/puppet/util/command_line/trollop.rb'
+    - 'lib/puppet/util/diff.rb'
+    - 'lib/puppet/util/rdoc/code_objects.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+Performance/RedundantStringChars:
+  Exclude:
+    - 'lib/puppet/provider/user/hpux.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
 Performance/RegexpMatch:
   Enabled: false
+
+# This cop supports safe autocorrection (--autocorrect).
+Performance/SortReverse:
+  Exclude:
+    - 'lib/puppet/type/tidy.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+Performance/Squeeze:
+  Exclude:
+    - 'lib/puppet/file_serving/configuration.rb'
+    - 'lib/puppet/type/file.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+Performance/StringIdentifierArgument:
+  Exclude:
+    - 'lib/puppet/generate/models/type/property.rb'
+    - 'lib/puppet/generate/type.rb'
+    - 'lib/puppet/util/log.rb'
+    - 'lib/puppet/util/provider_features.rb'
+    - 'lib/puppet/util/selinux.rb'
+    - 'lib/puppet/util/windows/daemon.rb'
+    - 'lib/puppet/util/windows/sid.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Performance/StringInclude:
+  Enabled: false
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: OnlySumOrWithInitialValue.
+Performance/Sum:
+  Exclude:
+    - 'lib/puppet/transaction/report.rb'
 
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Performance/UnfreezeString:
   Enabled: false
+
+Security/CompoundHash:
+  Exclude:
+    - 'lib/puppet/datatypes/impl/error.rb'
+    - 'lib/puppet/pops/serialization/extension.rb'
+    - 'lib/puppet/pops/types/p_init_type.rb'
+    - 'lib/puppet/pops/types/p_object_type.rb'
+    - 'lib/puppet/pops/types/p_object_type_extension.rb'
+    - 'lib/puppet/pops/types/p_runtime_type.rb'
+    - 'lib/puppet/pops/types/p_timespan_type.rb'
+    - 'lib/puppet/pops/types/p_type_set_type.rb'
+    - 'lib/puppet/pops/types/p_uri_type.rb'
+    - 'lib/puppet/pops/types/type_mismatch_describer.rb'
+    - 'lib/puppet/pops/types/types.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Security/IoMethods:
+  Exclude:
+    - 'lib/puppet/util/plist.rb'
 
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle, AllowModifiersOnSymbols, AllowModifiersOnAttrs, AllowModifiersOnAliasMethod.
@@ -209,6 +403,19 @@ Style/AndOr:
   Enabled: false
 
 # This cop supports safe autocorrection (--autocorrect).
+# Configuration parameters: AllowOnlyRestArgument, UseAnonymousForwarding, RedundantRestArgumentNames, RedundantKeywordRestArgumentNames, RedundantBlockArgumentNames.
+# RedundantRestArgumentNames: args, arguments
+# RedundantKeywordRestArgumentNames: kwargs, options, opts
+# RedundantBlockArgumentNames: blk, block, proc
+Style/ArgumentsForwarding:
+  Enabled: false
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/ArrayIntersect:
+  Exclude:
+    - 'lib/puppet/settings.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: percent_q, bare_percent
 Style/BarePercentLiterals:
@@ -227,6 +434,23 @@ Style/BarePercentLiterals:
 Style/BisectedAttrAccessor:
   Exclude:
     - 'lib/puppet/module.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/BitwisePredicate:
+  Exclude:
+    - 'lib/puppet/pops/types/p_init_type.rb'
+    - 'lib/puppet/pops/types/p_object_type.rb'
+    - 'lib/puppet/pops/types/recursion_guard.rb'
+    - 'lib/puppet/pops/types/type_formatter.rb'
+    - 'lib/puppet/pops/types/types.rb'
+    - 'lib/puppet/provider/file/windows.rb'
+    - 'lib/puppet/provider/group/windows_adsi.rb'
+    - 'lib/puppet/provider/user/windows_adsi.rb'
+    - 'lib/puppet/util/symbolic_file_mode.rb'
+    - 'lib/puppet/util/windows/access_control_entry.rb'
+    - 'lib/puppet/util/windows/adsi.rb'
+    - 'lib/puppet/util/windows/file.rb'
+    - 'lib/puppet/util/windows/security.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle, ProceduralMethods, FunctionalMethods, AllowedMethods, AllowedPatterns, AllowBracesOnProceduralOneLiners, BracesRequiredMethods.
@@ -284,6 +508,16 @@ Style/CommentedKeyword:
     - 'lib/puppet/util/rdoc/generators/template/puppet/puppet.rb'
     - 'lib/puppet/util/rpm_compare.rb'
     - 'lib/puppet/util/windows/service.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/ComparableBetween:
+  Exclude:
+    - 'lib/puppet/indirector/file_bucket_file/file.rb'
+    - 'lib/puppet/pops/parser/lexer2.rb'
+    - 'lib/puppet/pops/parser/pn_parser.rb'
+    - 'lib/puppet/pops/serialization/object.rb'
+    - 'lib/puppet/pops/time/timespan.rb'
+    - 'lib/puppet/pops/types/p_init_type.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle, SingleLineConditionsOnly, IncludeTernaryExpressions.
@@ -348,9 +582,29 @@ Style/Encoding:
     - 'lib/puppet/type/package.rb'
     - 'lib/puppet/util/windows/service.rb'
 
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/EnvHome:
+  Exclude:
+    - 'lib/puppet/provider/package/gem.rb'
+    - 'lib/puppet/provider/package/pkgutil.rb'
+    - 'lib/puppet/provider/package/puppetserver_gem.rb'
+    - 'lib/puppet/util.rb'
+
 # This cop supports safe autocorrection (--autocorrect).
 Style/ExplicitBlockArgument:
   Enabled: false
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/FileEmpty:
+  Exclude:
+    - 'lib/puppet/node/server_facts.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/FileNull:
+  Exclude:
+    - 'lib/puppet/daemon.rb'
+    - 'lib/puppet/file_serving/http_metadata.rb'
+    - 'lib/puppet/util/execution.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.
@@ -387,6 +641,18 @@ Style/GlobalVars:
 Style/GuardClause:
   Enabled: false
 
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/HashExcept:
+  Exclude:
+    - 'lib/puppet/face/parser.rb'
+    - 'lib/puppet/parameter/value_collection.rb'
+    - 'lib/puppet/provider/user/user_role_add.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/HashSlice:
+  Exclude:
+    - 'lib/puppet/property/keyvalue.rb'
+
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle, EnforcedShorthandSyntax, UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
 # SupportedStyles: ruby19, hash_rockets, no_mixed_keys, ruby19_no_mixed_keys
@@ -415,6 +681,21 @@ Style/InverseMethods:
     - 'lib/puppet/type/file.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
+Style/KeywordArgumentsMerging:
+  Exclude:
+    - 'lib/puppet/type.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/MapIntoArray:
+  Exclude:
+    - 'lib/puppet/face/module/list.rb'
+    - 'lib/puppet/provider/package/pacman.rb'
+    - 'lib/puppet/provider/service/windows.rb'
+    - 'lib/puppet/type/schedule.rb'
+    - 'lib/puppet/util/rdoc/generators/puppet_generator.rb'
+    - 'lib/puppet/util/windows/adsi.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowedMethods, AllowedPatterns.
 Style/MethodCallWithoutArgsParentheses:
   Enabled: false
@@ -437,6 +718,17 @@ Style/MethodDefParentheses:
     - 'lib/puppet/pops/validation.rb'
     - 'lib/puppet/pops/validation/validator_factory_4_0.rb'
     - 'lib/puppet/util/command_line/trollop.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/MinMaxComparison:
+  Exclude:
+    - 'lib/puppet/pops/types/p_timespan_type.rb'
+    - 'lib/puppet/pops/types/ruby_generator.rb'
+    - 'lib/puppet/pops/types/type_calculator.rb'
+    - 'lib/puppet/pops/types/type_mismatch_describer.rb'
+    - 'lib/puppet/pops/types/types.rb'
+    - 'lib/puppet/resource.rb'
+    - 'lib/puppet/util/windows/service.rb'
 
 Style/MissingRespondToMissing:
   Exclude:
@@ -521,22 +813,44 @@ Style/MultipleComparison:
 Style/MutableConstant:
   Enabled: false
 
+# This cop supports safe autocorrection (--autocorrect).
+Style/NegatedIfElseCondition:
+  Enabled: false
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/NestedFileDirname:
+  Exclude:
+    - 'lib/puppet/util/rdoc/parser/puppet_parser_core.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/NilLambda:
+  Exclude:
+    - 'lib/puppet/pops/parser/lexer2.rb'
+
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: EnforcedStyle, AllowedMethods, AllowedPatterns.
 # SupportedStyles: predicate, comparison
 Style/NumericPredicate:
   Enabled: false
 
+Style/OpenStructUse:
+  Exclude:
+    - 'lib/puppet/util/network_device/config.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/OperatorMethodCall:
+  Exclude:
+    - 'lib/puppet/pops/types/type_mismatch_describer.rb'
+
 # Configuration parameters: AllowedMethods.
 # AllowedMethods: respond_to_missing?
 Style/OptionalBooleanParameter:
   Enabled: false
 
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: PreferredDelimiters.
-Style/PercentLiteralDelimiters:
-  Exclude:
-    - 'lib/puppet/util.rb'
+# This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: Methods.
+Style/RedundantArgument:
+  Enabled: false
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowedMethods.
@@ -551,12 +865,34 @@ Style/RedundantCondition:
     - 'lib/puppet/provider/package/apt.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
+Style/RedundantConstantBase:
+  Exclude:
+    - 'lib/puppet/provider/package/openbsd.rb'
+    - 'lib/puppet/provider/package/pip.rb'
+    - 'lib/puppet/type/file.rb'
+    - 'lib/puppet/type/tidy.rb'
+    - 'lib/puppet/util/command_line.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/RedundantEach:
+  Exclude:
+    - 'lib/puppet/pops/types/string_converter.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/RedundantHeredocDelimiterQuotes:
+  Enabled: false
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/RedundantLineContinuation:
+  Exclude:
+    - 'lib/puppet/provider/nameservice/directoryservice.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
 Style/RedundantParentheses:
   Exclude:
     - 'lib/puppet/application/agent.rb'
     - 'lib/puppet/application/face_base.rb'
     - 'lib/puppet/graph/rb_tree_map.rb'
-    - 'lib/puppet/module_tool/contents_description.rb'
     - 'lib/puppet/module_tool/shared_behaviors.rb'
     - 'lib/puppet/pops/parser/lexer_support.rb'
     - 'lib/puppet/provider/package/aix.rb'
@@ -570,16 +906,73 @@ Style/RedundantParentheses:
     - 'lib/puppet/util/windows/com.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
+Style/RedundantRegexpArgument:
+  Enabled: false
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/RedundantSelfAssignmentBranch:
+  Exclude:
+    - 'lib/puppet/parser/resource.rb'
+    - 'lib/puppet/pops/evaluator/access_operator.rb'
+    - 'lib/puppet/pops/issue_reporter.rb'
+    - 'lib/puppet/pops/lookup/lookup_adapter.rb'
+    - 'lib/puppet/pops/types/string_converter.rb'
+    - 'lib/puppet/pops/types/type_parser.rb'
+    - 'lib/puppet/pops/types/types.rb'
+    - 'lib/puppet/pops/validation.rb'
+    - 'lib/puppet/type/file/checksum.rb'
+    - 'lib/puppet/type/group.rb'
+    - 'lib/puppet/util/log/destinations.rb'
+    - 'lib/puppet/util/windows/service.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/RedundantStringEscape:
+  Exclude:
+    - 'lib/puppet/parser/functions/assert_type.rb'
+    - 'lib/puppet/parser/functions/hiera.rb'
+    - 'lib/puppet/parser/functions/hiera_array.rb'
+    - 'lib/puppet/parser/functions/hiera_hash.rb'
+    - 'lib/puppet/parser/functions/hiera_include.rb'
+    - 'lib/puppet/parser/functions/new.rb'
+    - 'lib/puppet/parser/functions/versioncmp.rb'
+    - 'lib/puppet/provider/service/freebsd.rb'
+    - 'lib/puppet/provider/user/directoryservice.rb'
+    - 'lib/puppet/type/file/ctime.rb'
+    - 'lib/puppet/type/file/mtime.rb'
+    - 'lib/puppet/util/rdoc/generators/puppet_generator.rb'
+
+# This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: implicit, explicit
 Style/RescueStandardError:
   Enabled: false
 
 # This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: AllowedMethods, AllowedPatterns.
+Style/ReturnNilInPredicateMethodDefinition:
+  Exclude:
+    - 'lib/puppet/provider/parsedfile.rb'
+    - 'lib/puppet/settings.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: ConvertCodeThatCanStartToReturnNil, AllowedMethods, MaxChainLength.
 # AllowedMethods: present?, blank?, presence, try, try!
 Style/SafeNavigation:
   Enabled: false
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/SelectByRegexp:
+  Exclude:
+    - 'lib/puppet.rb'
+    - 'lib/puppet/graph/simple_graph.rb'
+    - 'lib/puppet/provider/package/appdmg.rb'
+    - 'lib/puppet/provider/package/apple.rb'
+    - 'lib/puppet/provider/package/gem.rb'
+    - 'lib/puppet/provider/package/openbsd.rb'
+    - 'lib/puppet/provider/package/pkg.rb'
+    - 'lib/puppet/provider/package/pkgdmg.rb'
+    - 'lib/puppet/provider/package/puppetserver_gem.rb'
+    - 'lib/puppet/provider/user/user_role_add.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowAsExpressionSeparator.
@@ -591,6 +984,16 @@ Style/Semicolon:
 # SupportedStyles: only_raise, only_fail, semantic
 Style/SignalException:
   Enabled: false
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/SingleLineDoEndBlock:
+  Exclude:
+    - 'lib/puppet/interface/action.rb'
+    - 'lib/puppet/interface/documentation.rb'
+    - 'lib/puppet/interface/option.rb'
+    - 'lib/puppet/interface/option_builder.rb'
+    - 'lib/puppet/parameter.rb'
+    - 'lib/puppet/type/tidy.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: AllowIfMethodIsEmpty.
@@ -634,6 +1037,19 @@ Style/StderrPuts:
     - 'lib/puppet/util/rdoc/generators/puppet_generator.rb'
 
 # This cop supports unsafe autocorrection (--autocorrect-all).
+Style/StringChars:
+  Exclude:
+    - 'lib/puppet/ffi/windows/api_types.rb'
+    - 'lib/puppet/functions/regsubst.rb'
+    - 'lib/puppet/functions/sort.rb'
+    - 'lib/puppet/functions/unique.rb'
+    - 'lib/puppet/indirector/file_bucket_file/file.rb'
+    - 'lib/puppet/pops/parser/heredoc_support.rb'
+    - 'lib/puppet/pops/types/string_converter.rb'
+    - 'lib/puppet/util/command_line/trollop.rb'
+    - 'lib/puppet/util/symbolic_file_mode.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: Mode.
 Style/StringConcatenation:
   Enabled: false
@@ -643,6 +1059,26 @@ Style/StringConcatenation:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Enabled: false
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/SuperArguments:
+  Enabled: false
+
+# This cop supports safe autocorrection (--autocorrect).
+Style/SuperWithArgsParentheses:
+  Exclude:
+    - 'lib/puppet/module_tool/errors/installer.rb'
+    - 'lib/puppet/module_tool/errors/shared.rb'
+    - 'lib/puppet/module_tool/errors/uninstaller.rb'
+    - 'lib/puppet/module_tool/errors/upgrader.rb'
+    - 'lib/puppet/parser/scope.rb'
+    - 'lib/puppet/pops/loader/module_loaders.rb'
+    - 'lib/puppet/pops/types/string_converter.rb'
+
+# This cop supports unsafe autocorrection (--autocorrect-all).
+Style/SwapValues:
+  Exclude:
+    - 'lib/puppet/pops/evaluator/evaluator_impl.rb'
 
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle, MinSize.
