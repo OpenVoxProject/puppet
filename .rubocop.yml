@@ -1,13 +1,14 @@
 inherit_from: .rubocop_todo.yml
 
-require:
+plugins:
   - rubocop-i18n
   - rubocop-performance
   - rubocop-rake
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 3.1
+  TargetRubyVersion: 3.2
+  NewCops: enable
   Include:
     - 'lib/**/*.rb'
     - 'ext/**/*.rb'

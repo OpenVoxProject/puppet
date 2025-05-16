@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative '../../../puppet/provider/package'
-require 'set'
 require 'uri'
 
 Puppet::Type.type(:package).provide :pacman, :parent => Puppet::Provider::Package do

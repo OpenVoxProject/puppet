@@ -5,7 +5,6 @@ require_relative '../puppet/util/tagging'
 require_relative '../puppet/util/skip_tags'
 require_relative '../puppet/application'
 require 'digest/sha1'
-require 'set'
 
 # the class that actually walks our resource/property tree, collects the changes,
 # and performs them
