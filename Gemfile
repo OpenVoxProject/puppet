@@ -59,7 +59,7 @@ group(:test) do
   gem 'rubocop-i18n', '~> 3.0', require: false, platforms: [:ruby]
   gem 'rubocop-performance', '~> 1.0', require: false, platforms: [:ruby]
   gem 'rubocop-rake', '~> 0.6', require: false, platforms: [:ruby]
-  gem 'rubocop-rspec', '~> 2.0', require: false, platforms: [:ruby]
+  gem 'rubocop-rspec', '~> 3.6', require: false, platforms: [:ruby]
 end
 
 group(:development, optional: true) do
