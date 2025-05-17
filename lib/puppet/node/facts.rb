@@ -28,6 +28,7 @@ class Puppet::Node::Facts
   attr_accessor :name, :values, :timestamp
 
   def add_local_facts
+    values["implementation"] = "openvox"
     values["clientcert"] = Puppet.settings[:certname]
     values["clientversion"] = Puppet.version.to_s
     values["clientnoop"] = Puppet.settings[:noop]
