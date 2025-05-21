@@ -1,6 +1,6 @@
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
-gemspec
+gemspec name: 'openvox'
 
 def location_for(place, fake_version = nil)
   if place.is_a?(String) && place =~ /^((?:git[:@]|https:)[^#]*)#(.*)/
