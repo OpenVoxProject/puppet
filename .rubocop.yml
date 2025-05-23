@@ -1,12 +1,14 @@
 inherit_from: .rubocop_todo.yml
 
-require:
+plugins:
   - rubocop-i18n
   - rubocop-performance
   - rubocop-rake
+require:
   - rubocop-rspec
 
 AllCops:
+  NewCops: disable
   TargetRubyVersion: 3.1
   Include:
     - 'lib/**/*.rb'
