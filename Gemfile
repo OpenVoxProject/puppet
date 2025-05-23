@@ -20,7 +20,7 @@ gem "facter", *location_for(ENV['FACTER_LOCATION'] || ["~> 4.3"])
 gem "semantic_puppet", *location_for(ENV['SEMANTIC_PUPPET_LOCATION'] || ["~> 1.0"])
 gem "puppet-resource_api", *location_for(ENV['RESOURCE_API_LOCATION'] || ["~> 1.5"])
 gem 'ostruct', '~> 0.6.0'
-gem 'benchmark', '~> 0.3.0'
+gem 'benchmark', '~> 0.4.0'
 
 group(:features) do
   gem 'diff-lcs', '~> 1.3', require: false
