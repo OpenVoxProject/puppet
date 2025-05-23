@@ -968,7 +968,7 @@ describe 'The string converter' do
 
       it 'formats a derived hash as a Runtime' do
         expect(converter.convert(hash)).to eq('{\'first\' => 1, \'second\' => 2}')
-        expect(converter.convert(derived_hash)).to eq('{"first" => 1, "second" => 2}')
+        expect(converter.convert(derived_hash)).to eq('{"first"=>1, "second"=>2}')
       end
 
       it 'formats a derived hash with #to_hash retuning plain Hash as a Hash' do

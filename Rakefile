@@ -99,7 +99,7 @@ end
 
 task :spec do
   ENV["LOG_SPEC_ORDER"] = "true"
-  sh %{rspec #{ENV['TEST'] || ENV['TESTS'] || 'spec'}}
+  sh %{rspec #{ENV['TEST'] || ENV['TESTS'] || ENV['SPEC'] || 'spec'}}
 end
 
 begin

@@ -461,7 +461,7 @@ describe "Puppet Network Format" do
         []                => "",
         [1, 2]            => "1\n2\n",
         ["one"]           => "one\n",
-        [{1 => 1}]        => "{1 => 1}\n",
+        [{1 => 1}]        => "{1=>1}\n",
         [[1, 2], [3, 4]]  => "[1, 2]\n[3, 4]\n"
       }.each_pair do |input, output|
         it "should render #{input.inspect} as one item per line" do
@@ -476,7 +476,7 @@ describe "Puppet Network Format" do
         {1 => 2}                             => "1  2\n",
         {"one" => "two"}                     => "one  \"two\"\n", # odd that two is quoted but one isn't
         {[1,2] => 3, [2,3] => 5, [3,4] => 7} => "{\n  \"[1, 2]\": 3,\n  \"[2, 3]\": 5,\n  \"[3, 4]\": 7\n}",
-        {{1 => 2} => {3 => 4}}               => "{\n  \"{1 => 2}\": {\n    \"3\": 4\n  }\n}"
+        {{1 => 2} => {3 => 4}}               => "{\n  \"{1=>2}\": {\n    \"3\": 4\n  }\n}"
       }.each_pair do |input, output|
         it "should render #{input.inspect}" do
           expect(console.render(input)).to eq(output)

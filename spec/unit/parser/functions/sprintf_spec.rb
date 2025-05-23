@@ -57,7 +57,7 @@ describe "the sprintf function" do
 
   it 'a hash with string keys that is output formats as strings' do
     result = @scope.function_sprintf(["%s", {'foo' => 1, 'bar' => 2}])
-    expect(result).to eq("{\"foo\" => 1, \"bar\" => 2}")
+    expect(result).to eq("{\"foo\"=>1, \"bar\"=>2}")
   end
 
   it 'named arguments hash with non string keys are tolerated' do

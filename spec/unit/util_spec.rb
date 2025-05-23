@@ -936,7 +936,7 @@ describe Puppet::Util do
     end
 
     it "should include function names" do
-      expect(Puppet::Util.pretty_backtrace).to match(/:in '.*'/)
+      expect(Puppet::Util.pretty_backtrace).to match(/:in `.*'/)
     end
 
     it "should work with Windows paths" do

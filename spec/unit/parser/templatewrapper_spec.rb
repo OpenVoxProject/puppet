@@ -74,7 +74,7 @@ describe Puppet::Parser::TemplateWrapper do
 
   it "raises error on access to removed in-scope variables via method calls" do
     scope["in_scope_variable"] = "is good"
-    expect { tw.result("<%= in_scope_variable %>") }.to raise_error(/undefined local variable or method 'in_scope_variable'/ )
+    expect { tw.result("<%= in_scope_variable %>") }.to raise_error(/undefined local variable or method `in_scope_variable'/ )
   end
 
   it "reports that variable is available when it is in scope" do

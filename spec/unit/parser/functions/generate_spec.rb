@@ -90,7 +90,8 @@ describe "the generate function" do
           echo $PWD
         END
         Puppet::FileSystem.chmod(0755, command)
-        expect(scope.function_generate([command]).chomp).to eq(cwd)
+        # Using a matcher to avoid /var vs. /private/var shenanigans on MacOS
+        expect(scope.function_generate([command]).chomp).to match(/#{cwd}/)
       end
     end
   end

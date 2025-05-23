@@ -24,7 +24,7 @@ describe 'the join function' do
   end
 
   it 'does not flatten arrays nested in hashes' do
-    expect(compile_to_catalog("notify { join([1,2,{a => [3,4]}]): }")).to have_resource('Notify[12{"a" => [3, 4]}]')
+    expect(compile_to_catalog("notify { join([1,2,{a => [3,4]}]): }")).to have_resource('Notify[12{"a"=>[3, 4]}]')
   end
 
   it 'formats nil/undef as empty string' do
