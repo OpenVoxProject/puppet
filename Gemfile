@@ -42,7 +42,7 @@ end
 group(:test) do
   # 1.16.0 - 1.16.2 are broken on Windows
   gem 'ffi', '>= 1.15.5', '< 1.17.0', '!= 1.16.0', '!= 1.16.1', '!= 1.16.2', require: false
-  gem "json-schema", "~> 2.0", require: false
+  gem "json-schema", "~> 5.1", require: false
   gem "racc", "1.5.2", require: false
   gem "rake", *location_for(ENV['RAKE_LOCATION'] || '~> 13.0')
   gem "rspec", "~> 3.1", require: false
