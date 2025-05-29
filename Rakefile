@@ -131,3 +131,19 @@ if Rake.application.top_level_tasks.grep(/^gettext:/).any?
     abort("Run `bundle install --with documentation` to install the `gettext-setup` gem.")
   end
 end
+
+require "github_changelog_generator/task"
+require_relative "lib/puppet/version"
+
+GitHubChangelogGenerator::RakeTask.new :changelog do |config|
+  config.header = <<~HEADER.chomp
+    # Changelog
+
+    All notable changes to this project will be documented in this file.
+  HEADER
+  config.user = "openvoxproject"
+  config.project = "puppet"
+  config.exclude_labels = %w[dependencies duplicate question invalid wontfix wont-fix modulesync skip-changelog]
+  config.since_tag = "8.18.1"
+  config.future_release = Puppet::PUPPETVERSION
+end
