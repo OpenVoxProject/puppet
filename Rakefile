@@ -132,18 +132,23 @@ if Rake.application.top_level_tasks.grep(/^gettext:/).any?
   end
 end
 
-require "github_changelog_generator/task"
-require_relative "lib/puppet/version"
+begin
+  require "github_changelog_generator/task"
+  require_relative "lib/puppet/version"
 
-GitHubChangelogGenerator::RakeTask.new :changelog do |config|
-  config.header = <<~HEADER.chomp
+  GitHubChangelogGenerator::RakeTask.new :changelog do |config|
+    config.header = <<~HEADER.chomp
     # Changelog
 
     All notable changes to this project will be documented in this file.
-  HEADER
-  config.user = "openvoxproject"
-  config.project = "puppet"
-  config.exclude_labels = %w[dependencies duplicate question invalid wontfix wont-fix modulesync skip-changelog]
-  config.since_tag = "8.18.1"
-  config.future_release = Puppet::PUPPETVERSION
+    HEADER
+    config.user = "openvoxproject"
+    config.project = "puppet"
+    config.exclude_labels = %w[dependencies duplicate question invalid wontfix wont-fix modulesync skip-changelog]
+    config.future_release = Puppet::PUPPETVERSION
+  end
+rescue LoadError
+  task :changelog do
+    abort("Run `bundle install --with packaging` to install the `github_changelog_generator` gem.")
+  end
 end
