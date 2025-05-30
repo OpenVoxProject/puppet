@@ -28,7 +28,7 @@ jobs:
           echo ":github: Bearer ${{ secrets.GITHUB_TOKEN }}" >> ~/.gem/credentials
           chmod 0600 ~/.gem/credentials
       - name: Publish gem to GitHub packages
-        run: gem push --key github --host https://rubygems.pkg.github.com/openvoxproject *.gem
+        run: gem push --key github --host https://rubygems.pkg.github.com/OpenVoxProject *.gem
       - name: Create Release Page
         shell: bash
         env:
