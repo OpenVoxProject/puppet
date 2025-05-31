@@ -146,6 +146,8 @@ begin
     config.project = "puppet"
     config.exclude_labels = %w[dependencies duplicate question invalid wontfix wont-fix modulesync skip-changelog]
     config.future_release = Puppet::PUPPETVERSION
+    config.since_tag = '7.36.1'
+    config.exclude_tags_regex = '^8'
   end
 rescue LoadError
   task :changelog do

@@ -67,6 +67,7 @@ end
 
 group(:packaging) do
   gem 'github_changelog_generator'
+  gem 'faraday-retry'
   gem 'packaging', *location_for(ENV['PACKAGING_LOCATION'] || '~> 0.99')
 end
 
