@@ -1,5 +1,5 @@
 Gem::Specification.new do |spec|
-  spec.name = "openvox"
+  spec.name = File.basename(__FILE__, '.gemspec')
   spec.version = "8.18.1"
   spec.licenses = ['Apache-2.0']
 
