@@ -29,13 +29,4 @@ jobs:
       - name: Output Ruby environment information
         run: bundle env
       - name: Run Beaker
-        run: |-
-          bundle exec beaker init --hosts hosts.yaml \
-            --preserve-hosts always --keyfile "${SSH_KEY}" \
-            --pre-suite pre-suite/configure_type_defaults.rb \
-            --tests tests
-          # The provision step is still needed here, see notes in the
-          # kvm_automation_tooling/templates/beaker-hosts.yaml.epp
-          # template...
-          bundle exec beaker provision
-          bundle exec beaker exec
+        run: bundle exec rake ci:test:docker
