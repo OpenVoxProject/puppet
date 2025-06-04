@@ -25,6 +25,7 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
           bundler-cache: true
+          working-directory: ${{ defaults.run.working-directory }}
       - name: Output Ruby environment information
         run: bundle env
       - name: Run Beaker
