@@ -38,7 +38,7 @@ to clean up docker containers used for testing.
 EOS
     task :docker do
       begin
-        ENV['HOSTS'] ||= 'centos7-64a'
+        ENV['HOSTS'] ||= 'centos9-64a'
         ENV['SHA'] ||= `git rev-parse HEAD`.chomp
         ENV['OPTIONS'] ||= '--preserve-hosts=always'
         ENV['OPTIONS'] += ' --test-tag-exclude=server'
