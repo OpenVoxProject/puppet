@@ -20,7 +20,7 @@ test_name 'Validate Sign Cert' do
 
   step "Set 'server' setting"
   hosts.each do |host|
-    on(host, puppet("config set server #{master.hostname} --section main"))
+    on(host, puppet("config set server #{fqdn} --section main"))
   end
 
   step 'Start puppetserver' do
