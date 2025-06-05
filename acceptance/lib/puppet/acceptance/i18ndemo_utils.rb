@@ -13,13 +13,15 @@ module Acceptance
       fail_test("puppet server machine is missing #{language} locale. help...") if language.nil?
 
       on(master, "localectl set-locale LANG=#{language}")
-      on(master, "service #{master['puppetservice']} restart")
+      on(master, puppet_resource('service', master['puppetservice'], 'ensure=stopped'))
+      on(master, puppet_resource('service', master['puppetservice'], 'ensure=running'))
     end
 
     def reset_master_system_locale
       language = language_name(master, 'en_US') || 'en_US'
       on(master, "localectl set-locale LANG=#{language}")
-      on(master, "service #{master['puppetservice']} restart")
+      on(master, puppet_resource('service', master['puppetservice'], 'ensure=stopped'))
+      on(master, puppet_resource('service', master['puppetservice'], 'ensure=running'))
     end
 
     def install_i18n_demo_module(node, environment=nil)
