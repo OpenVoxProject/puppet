@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.summary = "OpenVox, a community implementation of Puppet -- an automated configuration management tool"
   spec.specification_version = 4
-  spec.add_runtime_dependency('base64', '>= 0.1', '< 0.3')
+  spec.add_runtime_dependency('base64', '>= 0.1', '< 0.4')
   spec.add_runtime_dependency('benchmark', '>= 0.3', '< 0.5')
   spec.add_runtime_dependency('concurrent-ruby', '~> 1.0')
   spec.add_runtime_dependency('deep_merge', '~> 1.0')
