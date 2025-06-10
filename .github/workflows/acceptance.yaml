@@ -1,0 +1,32 @@
+---
+name: Beaker Acceptance Tests
+
+on:
+  workflow_dispatch: {}
+  pull_request: {}
+
+permissions:
+  contents: read
+
+env:
+  RUBY_VERSION: '3.3'
+
+jobs:
+  acceptance:
+    defaults:
+      run:
+        working-directory: acceptance
+    name: Acceptance Tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Ruby and Run Bundler
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+          working-directory: acceptance
+      - name: Output Ruby environment information
+        run: bundle env
+      - name: Run Beaker
+        run: bundle exec rake ci:test:docker
