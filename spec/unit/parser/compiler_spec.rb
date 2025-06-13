@@ -874,7 +874,10 @@ describe Puppet::Parser::Compiler do
               include #{name}
             }
           MANIFEST
-          }.to raise_error(Puppet::Error, /Class '#{name}' is already defined \(line: 1\); cannot be redefined as a node \(line: 2\) on node #{name}/)
+          # error message differs a bit
+          # jruby 9.4: Class 'someone' is already defined (line: 1); cannot be redefined as a node (line: 2) (line: 2) on node someone
+          # MRI: Class 'someone' is already defined (line: 1); cannot be redefined as a node (line: 2) on node someone
+          }.to raise_error(Puppet::Error, /Class '#{name}' is already defined \(line: 1\); cannot be redefined as a node \(line: 2\).* on node #{name}/)
         end
 
         it "evaluates the class if the node definition uses a regexp" do
