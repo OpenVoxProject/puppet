@@ -120,7 +120,7 @@ EOF
   autosign_inspect_csr_path = "#{testdirs[master]}/autosign_inspect_csr.rb"
   step "Step 3: setup an autosign command that inspects CSR attributes" do
     autosign_inspect_csr = <<-END
-#!/usr/bin/env ruby
+#!/opt/puppetlabs/puppet/bin/ruby
 require 'openssl'
 
 def unwrap_attr(attr)

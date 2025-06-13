@@ -3,7 +3,8 @@ test_name 'should manage purge_ssh_keys' do
       'audit:acceptance'
 
   # MODULES-11236
-  skip_test('This test does not work on Windows nor macOS') if agent['platform'] =~ /windows/ || agent['platform'] =~ /osx/
+  # This test does not work on Windows nor macOS
+  confine :except, :platform => /windows|osx/
 
   name = "usr#{rand(9999).to_i}"
 

@@ -18,8 +18,9 @@ tag 'audit:high',
   tmp_environment = mk_tmp_environment_with_teardown(master, app_type)
 
   step 'ensure $server_facts exist' do
-    create_sitepp(master, tmp_environment, <<-SITE)
-      notify{"abc$server_facts":}
+    create_sitepp(master, tmp_environment, <<~SITE)
+      $server_facts_hash_exists_and_is_not_empty = ($server_facts =~ Hash) and ($server_facts.length != 0)
+      notify { "server_facts hash exists and is not empty: ${server_facts_hash_exists_and_is_not_empty}": }
     SITE
 
     master_opts = {}
@@ -27,7 +28,7 @@ tag 'audit:high',
       agents.each do |agent|
         on(agent, puppet("agent -t --environment #{tmp_environment}"),
            :acceptable_exit_codes => 2) do |result|
-          assert_match(/abc{serverversion/, result.stdout,
+           assert_match(/Notify\[server_facts hash exists and is not empty: true\]/, result.stdout,
                        "#{agent}: $server_facts should have some stuff" )
         end
       end

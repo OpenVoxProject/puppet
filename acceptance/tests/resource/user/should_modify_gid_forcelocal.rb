@@ -24,7 +24,7 @@ test_name "verify that we can modify the gid with forcelocal" do
     end
 
     step "ensure the user exists and has the old group" do
-      apply_manifest_on(agent, resource_manifest('user', user, ensure: 'present', gid: group1, forcelocal: true))
+      apply_manifest_on(host, resource_manifest('user', user, ensure: 'present', gid: group1, forcelocal: true))
     end
 
     step "verify that the user has the correct gid" do
@@ -37,7 +37,7 @@ test_name "verify that we can modify the gid with forcelocal" do
     end
 
     step "modify the GID of the user" do
-      apply_manifest_on(agent, resource_manifest('user', user, ensure: 'present', gid: group2, forcelocal: true), expect_changes: true)
+      apply_manifest_on(host, resource_manifest('user', user, ensure: 'present', gid: group2, forcelocal: true), expect_changes: true)
     end
 
     step "verify that the user has the updated gid" do
@@ -50,7 +50,7 @@ test_name "verify that we can modify the gid with forcelocal" do
     end
 
     step "run again for idempotency" do
-      apply_manifest_on(agent, resource_manifest('user', user, ensure: 'present', gid: group2, forcelocal: true), catch_changes: true)
+      apply_manifest_on(host, resource_manifest('user', user, ensure: 'present', gid: group2, forcelocal: true), catch_changes: true)
     end
   end
 end

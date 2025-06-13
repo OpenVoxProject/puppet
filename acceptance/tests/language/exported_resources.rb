@@ -15,7 +15,7 @@ tag 'audit:high',
 
   teardown do
     step 'stop puppet server' do
-      on(master, "service #{master['puppetservice']} stop")
+      service(master, :stop, master['puppetservice'])
     end
     step 'remove cached agent json catalogs from the master' do
       on(master, "rm -f #{File.join(master.puppet['yamldir'],'catalog','*')}",
@@ -161,7 +161,7 @@ MANIFEST
     on(master, "echo environment=#{tmp_environment} >> #{File.join(master.puppet['confdir'],'puppet.conf')}")
     on(master, puppet('config set storeconfigs true --section main'))
     on(master, puppet("config set storeconfigs_backend #{storeconfigs_backend_name} --section main"))
-    on(master, "service #{master['puppetservice']} restart")
+    service(master, :restart, master['puppetservice'])
     step 'run the master agent to export the resources' do
       on(master, puppet("agent -t --environment #{tmp_environment}"))
     end
