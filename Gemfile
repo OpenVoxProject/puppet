@@ -46,7 +46,7 @@ group(:test) do
   gem "rake", *location_for(ENV['RAKE_LOCATION'] || '~> 13.0')
   gem "rspec", "~> 3.1", require: false
   gem "rspec-expectations", ["~> 3.9", "!= 3.9.3"]
-  gem "rspec-its", "~> 1.1", require: false
+  gem "rspec-its", "~> 2.0", require: false
   gem 'vcr', '~> 6.1', require: false
   gem 'webmock', '~> 3.0', require: false
   gem 'webrick', '~> 1.7', require: false
