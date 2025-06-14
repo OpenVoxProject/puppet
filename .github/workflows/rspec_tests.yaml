@@ -91,4 +91,4 @@ jobs:
             sudo apt remove rpm
           fi
 
-          bundle exec rake parallel:spec
+          bundle exec rake parallel:spec[2]
