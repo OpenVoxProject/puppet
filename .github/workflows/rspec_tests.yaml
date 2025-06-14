@@ -21,6 +21,9 @@ jobs:
           - {os: ubuntu-24.04, ruby: '3.3'} # openssl 3
           - {os: ubuntu-24.04, ruby: '3.4'} # openssl 3
           - {os: ubuntu-22.04, ruby: 'jruby-9.4.3'}
+          - {os: ubuntu-22.04, ruby: 'jruby-9.4.3'} # what Perforce used in their CI
+          - {os: ubuntu-22.04, ruby: 'jruby-9.4.8' } # what Openvox packages
+          - {os: ubuntu-22.04, ruby: 'jruby-9.4.13' } # latest
           - {os: windows-2019, ruby: '3.1'}
           - {os: windows-2019, ruby: '3.2'} # openssl 3
           - {os: windows-2019, ruby: '3.3'} # openssl 3 / latest Ruby
