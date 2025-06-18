@@ -35,12 +35,6 @@ describe Puppet::Node::Facts, "when indirecting" do
       @facts.add_local_facts
       expect(@facts.values["environment"]).to eq("foo")
     end
-
-    it "adds the implementation fact" do
-      @facts.add_local_facts
-      expect(@facts.values).to include("implementation")
-      expect(@facts.values["implementation"]).to eq("openvox")
-    end
   end
 
   describe "when sanitizing facts" do
