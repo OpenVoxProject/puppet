@@ -48,7 +48,8 @@ group(:test) do
   gem "rspec-expectations", ["~> 3.9", "!= 3.9.3"]
   gem "rspec-its", "~> 1.1", require: false
   gem 'vcr', '~> 5.0', require: false
-  gem 'webmock', '~> 3.0', require: false
+  # 3.25 and newer break our tests
+  gem 'webmock', '~> 3.0', '< 3.25', require: false
   gem 'webrick', '~> 1.7', require: false if RUBY_VERSION.to_f >= 3.0
   gem 'yard', require: false
 
