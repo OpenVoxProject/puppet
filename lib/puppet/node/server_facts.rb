@@ -4,9 +4,6 @@ class Puppet::Node::ServerFacts
   def self.load
     server_facts = {}
 
-    # Add implementation information
-    server_facts["implementation"] = Puppet.implementation
-
     # Add our server Puppet Enterprise version, if available.
     pe_version_file = '/opt/puppetlabs/server/pe_version'
     if File.readable?(pe_version_file) and !File.zero?(pe_version_file)
