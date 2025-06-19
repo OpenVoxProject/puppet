@@ -47,7 +47,7 @@ group(:test) do
   gem "rspec", "~> 3.1", require: false
   gem "rspec-expectations", ["~> 3.9", "!= 3.9.3"]
   gem "rspec-its", "~> 1.1", require: false
-  gem 'rspec-mocks', '< 3.13.3', require: false # breaking change afterwards: https://github.com/rspec/rspec-mocks/pull/1596
+  gem 'rspec-mocks', '< 3.13.6', require: false # breaking change afterwards: https://github.com/rspec/rspec-mocks/pull/1596
   gem 'vcr', '~> 6.1', require: false
   gem 'webmock', '~> 3.0', require: false
   gem 'webrick', '~> 1.7', require: false
