@@ -8,7 +8,7 @@
 # Raketasks and such to set the version based on the output of `git describe`
 
 module Puppet
-  PUPPETVERSION = '8.19.2'
+  PUPPETVERSION = '8.19.3'
   IMPLEMENTATION = 'openvox'
 
   ##
