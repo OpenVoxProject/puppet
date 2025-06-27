@@ -697,18 +697,16 @@ describe 'The Object Type' do
   end
 
   context 'when producing an init_hash_type' do
-    it 'produces a struct of all attributes that are not derived or constant' do
+    it 'produces a struct of all attributes excepting derived or constant' do
       t = parse_object('MyObject', <<-OBJECT)
         attributes => {
           a => { type => Integer },
-          b => { type => Integer, kind => given_or_derived },
-          c => { type => Integer, kind => derived },
-          d => { type => Integer, kind => constant, value => 4 }
+          b => { type => Integer, kind => derived },
+          c => { type => Integer, kind => constant, value => 4 }
         }
       OBJECT
       expect(t.init_hash_type).to eql(factory.struct({
         'a' => factory.integer,
-        'b' => factory.integer
       }))
     end
 
@@ -716,12 +714,14 @@ describe 'The Object Type' do
       t = parse_object('MyObject', <<-OBJECT)
         attributes => {
           a => { type => Integer },
-          b => { type => Integer, value => 4 }
+          b => { type => Integer, value => 4 },
+          c => { type => Integer, kind => given_or_derived },
         }
       OBJECT
       expect(t.init_hash_type).to eql(factory.struct({
         'a' => factory.integer,
-        factory.optional('b') => factory.integer
+        factory.optional('b') => factory.integer,
+        factory.optional('c') => factory.integer,
       }))
     end
 
